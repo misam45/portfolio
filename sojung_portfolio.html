@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sojung Lee Portfolio</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", Arial, sans-serif;
+      background: #6d90bd;
+      color: #243652;
+    }
+    a { text-decoration: none; color: inherit; }
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+    }
+    .board {
+      background: #f7f2e8;
+      border-radius: 42px;
+      padding: 28px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.10);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .eyebrow {
+      margin: 0 0 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: #6d90bd;
+    }
+    .title {
+      margin: 0;
+      font-size: 84px;
+      line-height: .92;
+      font-family: "Trebuchet MS", "Comic Sans MS", cursive, sans-serif;
+    }
+    .underline {
+      margin-top: 14px;
+      width: 160px;
+      height: 8px;
+      border-radius: 999px;
+      background: #f2d86f;
+    }
+    .lead {
+      margin: 28px 0 0;
+      max-width: 560px;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.45;
+      color: #304461;
+    }
+    .desc {
+      margin: 18px 0 0;
+      max-width: 560px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #566885;
+    }
+    .buttons {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+      transition: transform .15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      border: 2px solid #f2d86f;
+      background: #fff2a8;
+    }
+    .btn-secondary {
+      border: 2px solid #d7e3f5;
+      background: #ffffff;
+    }
+
+    .photo-wrap {
+      position: relative;
+    }
+    .photo-card {
+      border-radius: 36px;
+      border: 5px solid #f2df85;
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    .photo-inner {
+      aspect-ratio: 4 / 5;
+      border-radius: 28px;
+      background: #efe5d7;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #f8e7d5 0%, #ead7c0 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      color: #9a7f6c;
+    }
+    .float {
+      position: absolute;
+      font-size: 30px;
+    }
+    .f1 { left: -10px; top: 16px; }
+    .f2 { right: 0; top: 50%; }
+    .f3 { right: -6px; bottom: 10px; }
+
+    .section {
+      margin-top: 40px;
+      border-radius: 34px;
+      background: #fff;
+      padding: 26px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    }
+    .section.soft {
+      border: 3px solid #f2e6bd;
+      background: #fffdf8;
+    }
+    .pill {
+      display: inline-block;
+      border-radius: 999px;
+      background: #6d90bd;
+      color: #fff;
+      padding: 10px 18px;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .about-grid {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .card {
+      border-radius: 28px;
+      border: 2px solid #e5edf8;
+      background: #fff;
+      padding: 22px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+    }
+    .about-copy {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.8;
+      color: #334763;
+      margin: 0;
+    }
+    .about-sub {
+      margin: 16px 0 0;
+      font-size: 14px;
+      line-height: 1.9;
+      color: #5c6f8b;
+    }
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 16px;
+    }
+    .principle-icon {
+      font-size: 30px;
+    }
+    .principle-title {
+      margin: 12px 0 0;
+      font-size: 18px;
+      font-weight: 800;
+    }
+    .principle-desc {
+      margin: 8px 0 0;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #5c6f8b;
+    }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .section-note {
+      font-size: 14px;
+      font-weight: 600;
+      color: #70829c;
+    }
+
+    .works {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 20px;
+    }
+    .work-card {
+      border-radius: 28px;
+      border: 3px solid #f2d86f;
+      background: #fffdf7;
+      padding: 20px;
+    }
+    .work-emoji {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      background: #f8efb8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+    }
+    .work-subtitle {
+      margin: 16px 0 0;
+      font-size: 14px;
+      font-weight: 700;
+      color: #6d90bd;
+    }
+    .work-title {
+      margin: 8px 0 0;
+      font-size: 30px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+    .work-desc {
+      margin: 16px 0 0;
+      font-size: 14px;
+      line-height: 1.9;
+      color: #556885;
+    }
+    .tags {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tag {
+      border-radius: 999px;
+      border: 2px solid #dbe6f5;
+      background: #fff;
+      padding: 7px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #5d708b;
+    }
+
+    .two-col {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+    .story-text {
+      margin-top: 24px;
+      display: grid;
+      gap: 18px;
+      font-size: 14px;
+      line-height: 2;
+      color: #556885;
+    }
+    .timeline {
+      margin-top: 28px;
+      display: grid;
+      gap: 20px;
+    }
+    .timeline-item {
+      position: relative;
+      padding-left: 24px;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 2px;
+      height: calc(100% + 16px);
+      background: #f2d86f;
+    }
+    .timeline-item:last-child::before {
+      height: 100%;
+    }
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      border: 2px solid #6d90bd;
+      background: #fff2af;
+    }
+    .period {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #7c8ea6;
+    }
+    .timeline-title {
+      margin: 4px 0 0;
+      font-size: 22px;
+      font-weight: 800;
+    }
+    .timeline-summary {
+      margin: 8px 0 0;
+      font-size: 14px;
+      line-height: 1.9;
+      color: #5d708b;
+    }
+
+    .tools-contact {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 32px;
+    }
+    .tool-list {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .tool {
+      border-radius: 20px;
+      border: 2px solid #dbe6f5;
+      background: #fffdf8;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #42556f;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+    }
+    .contact-box {
+      background: #fff8cd;
+    }
+    .contact-text {
+      margin: 20px 0 0;
+      max-width: 720px;
+      font-size: 16px;
+      line-height: 1.9;
+      color: #43566f;
+    }
+    .contact-actions {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .about-grid,
+      .two-col,
+      .tools-contact,
+      .works {
+        grid-template-columns: 1fr;
+      }
+      .title { font-size: 62px; }
+      .lead { font-size: 24px; }
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 16px 12px 28px; }
+      .board { padding: 18px; border-radius: 28px; }
+      .section { padding: 18px; border-radius: 24px; }
+      .section.soft { border-radius: 24px; }
+      .card, .work-card { border-radius: 22px; }
+      .title { font-size: 48px; }
+      .lead { font-size: 21px; }
+      .principles { grid-template-columns: 1fr; }
+      .pill { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <main class="board">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Personal Portfolio</p>
+          <h1 class="title">Sojung <br /> Lee</h1>
+          <div class="underline"></div>
+
+          <p class="lead">
+            운영을 이해하는 기획자,<br />
+            브랜드의 결을 만드는 마케터.
+          </p>
+          <p class="desc">
+            저는 고객이 더 자연스럽게 서비스를 경험하고, 팀은 더 효율적으로 일할 수 있는 방식을 고민합니다.
+            서비스를 기획할 때도, 문서를 만들 때도, 결국 중요한 것은 보기 좋은 결과보다 잘 작동하는 흐름이라고 생각합니다.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="#work">My Work</a>
+            <a class="btn btn-secondary" href="#story">My Story</a>
+          </div>
+        </div>
+
+        <div class="photo-wrap">
+          <div class="photo-card">
+            <div class="photo-inner">
+              <div class="profile-placeholder">☺</div>
+            </div>
+          </div>
+          <div class="float f1">✨</div>
+          <div class="float f2">☁️</div>
+          <div class="float f3">💛</div>
+        </div>
+      </section>
+
+      <section class="section soft">
+        <div class="pill">A little about me</div>
+        <div class="about-grid">
+          <div class="card">
+            <p class="about-copy">
+              저는 커리어 내내<br />
+              브랜드, 운영, 서비스 기획의 사이를 오가며 일해왔습니다.
+            </p>
+            <p class="about-sub">
+              그래서 기획을 할 때도 한쪽 관점만 보지 않습니다.
+              고객이 느끼는 경험, 내부 팀의 업무 흐름, 그리고 결과물이 전달하는 인상까지 함께 생각합니다.
+            </p>
+          </div>
+
+          <div class="principles">
+            <div class="card">
+              <div class="principle-icon">✏️</div>
+              <h3 class="principle-title">Clarity</h3>
+              <p class="principle-desc">복잡한 내용을 더 명확하게 정리합니다.</p>
+            </div>
+            <div class="card">
+              <div class="principle-icon">🧩</div>
+              <h3 class="principle-title">Structure</h3>
+              <p class="principle-desc">보여지는 디자인보다 먼저 흐름과 구조를 만듭니다.</p>
+            </div>
+            <div class="card">
+              <div class="principle-icon">🤲</div>
+              <h3 class="principle-title">Execution</h3>
+              <p class="principle-desc">아이디어를 실제 실행 가능한 결과로 연결합니다.</p>
+            </div>
+            <div class="card">
+              <div class="principle-icon">💛</div>
+              <h3 class="principle-title">Sensitivity</h3>
+              <p class="principle-desc">브랜드가 주는 인상과 사용 경험의 결을 중요하게 봅니다.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="section">
+        <div class="section-head">
+          <div class="pill">Featured Work</div>
+          <p class="section-note">제가 자주 해온 일, 그리고 잘하는 방식</p>
+        </div>
+
+        <div class="works">
+          <article class="work-card">
+            <div class="work-emoji">🍰</div>
+            <p class="work-subtitle">매장 솔루션을 더 직관적이고 매끄럽게</p>
+            <h3 class="work-title">Store Experience Planning</h3>
+            <p class="work-desc">
+              키오스크, POS, 모바일 오더처럼 고객과 매장이 만나는 접점을 기획합니다.
+              화면 하나를 설계하더라도 실제 운영 흐름과 사용자 경험이 자연스럽게 이어지도록 구조를 만듭니다.
+            </p>
+            <div class="tags">
+              <span class="tag">Service Planning</span>
+              <span class="tag">UX Flow</span>
+              <span class="tag">Store Solution</span>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-emoji">🫖</div>
+            <p class="work-subtitle">복잡한 내용을 설득력 있는 언어로</p>
+            <h3 class="work-title">Business Storytelling</h3>
+            <p class="work-desc">
+              제안서, 소개서, 발표 자료처럼 비즈니스 문서가 필요한 순간에 핵심 메시지를 정리하고,
+              상대가 이해하기 쉬운 흐름으로 다시 구성합니다.
+            </p>
+            <div class="tags">
+              <span class="tag">Proposal</span>
+              <span class="tag">Presentation</span>
+              <span class="tag">Narrative</span>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-emoji">🍋</div>
+            <p class="work-subtitle">브랜드와 실행 사이를 연결하는 일</p>
+            <h3 class="work-title">Brand & Operation</h3>
+            <p class="work-desc">
+              브랜드 메시지와 현장 운영이 따로 놀지 않도록 조율합니다.
+              보기 좋은 아이디어보다 실제로 작동하는 방식에 더 집중합니다.
+            </p>
+            <div class="tags">
+              <span class="tag">Brand</span>
+              <span class="tag">Operation</span>
+              <span class="tag">Communication</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <div class="two-col">
+        <section id="story" class="section">
+          <div class="pill">My Story</div>
+          <div class="story-text">
+            <p>
+              처음부터 ‘기획자’라는 이름으로만 일한 것은 아니었습니다.
+              운영, 마케팅, 커뮤니케이션, 문서 작성, 프로젝트 조율 같은 일을 거치면서 자연스럽게 지금의 방식이 만들어졌습니다.
+            </p>
+            <p>
+              그래서 저는 하나의 결과물을 만들 때 늘 질문합니다.<br />
+              “이건 실제로 잘 작동할까?”<br />
+              “상대는 이 메시지를 쉽게 이해할까?”<br />
+              “브랜드가 주는 인상과 경험은 자연스럽게 이어질까?”
+            </p>
+            <p>
+              제 강점은 예쁜 결과물 하나를 만드는 것이 아니라,
+              여러 요소를 연결해 더 나은 흐름을 만드는 데 있습니다.
+            </p>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="pill">Journey</div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <p class="period">2023 — Now</p>
+              <h3 class="timeline-title">발트루스트</h3>
+              <p class="timeline-summary">서비스 기획, 제안 자료 제작, 고객 커뮤니케이션, 프로젝트 운영</p>
+            </div>
+            <div class="timeline-item">
+              <p class="period">2019 — 2022</p>
+              <h3 class="timeline-title">매머드아이앤씨</h3>
+              <p class="timeline-summary">브랜드 마케팅, 제휴사 및 대행사 관리, 솔루션 운영</p>
+            </div>
+            <div class="timeline-item">
+              <p class="period">2018 — 2019</p>
+              <h3 class="timeline-title">매머드커피랩</h3>
+              <p class="timeline-summary">운영개발, 물류/재고/발주, 거래처 관리</p>
+            </div>
+            <div class="timeline-item">
+              <p class="period">2015 — 2017</p>
+              <h3 class="timeline-title">트렌타</h3>
+              <p class="timeline-summary">운영관리, 상품 등록, 상세페이지 제작, 정산 및 ERP 업무</p>
+            </div>
+            <div class="timeline-item">
+              <p class="period">2014 — 2015</p>
+              <h3 class="timeline-title">아이티뱅크</h3>
+              <p class="timeline-summary">기획 및 운영, 홍보 자료 작성, 일정 관리</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="tools-contact">
+        <section class="section">
+          <div class="pill">Tools I Use</div>
+          <div class="tool-list">
+            <span class="tool">Figma</span>
+            <span class="tool">PowerPoint</span>
+            <span class="tool">Photoshop</span>
+            <span class="tool">Excel</span>
+          </div>
+        </section>
+
+        <section class="section contact-box">
+          <div class="pill">Let’s Talk</div>
+          <p class="contact-text">
+            서비스와 브랜드, 운영과 커뮤니케이션이 만나는 지점에서 더 좋은 결과를 만드는 일에 관심이 많습니다.
+            새로운 프로젝트나 흥미로운 협업이 있다면 편하게 이야기해주세요.
+          </p>
+          <div class="contact-actions">
+            <a class="btn btn-primary" href="mailto:your-email@example.com">Contact Me</a>
+            <a class="btn btn-secondary" href="#">View Portfolio Note</a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
